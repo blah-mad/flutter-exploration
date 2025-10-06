@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_roomplan: ^1.0.7
 
 dev_dependencies:
   flutter_test:
