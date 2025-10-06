@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'dashboard/operations_dashboard_page.dart';
 import 'map_view/map_view_page.dart';
+import 'projects/projects_page.dart';
 import 'room_plan/room_plan_page.dart';
 
 void main() {
@@ -35,6 +37,12 @@ class _HomeShellState extends State<HomeShell> {
 
   static final List<_NavItem> _items = [
     _NavItem(
+      label: 'Overview',
+      icon: Icons.dashboard_outlined,
+      selectedIcon: Icons.dashboard,
+      view: const OperationsDashboardPage(),
+    ),
+    _NavItem(
       label: 'Map View',
       icon: Icons.map_outlined,
       selectedIcon: Icons.map,
@@ -50,13 +58,7 @@ class _HomeShellState extends State<HomeShell> {
       label: 'Projects',
       icon: Icons.work_outline,
       selectedIcon: Icons.work,
-      view: const _PlaceholderView(
-        key: ValueKey('projects'),
-        title: 'Projects',
-        description:
-            'Track ongoing projects and milestones from this screen soon.',
-        icon: Icons.work,
-      ),
+      view: const ProjectsPage(),
     ),
   ];
 
@@ -121,51 +123,4 @@ class _NavItem {
   final IconData icon;
   final IconData selectedIcon;
   final Widget view;
-}
-
-class _PlaceholderView extends StatelessWidget {
-  const _PlaceholderView({
-    super.key,
-    required this.title,
-    required this.description,
-    required this.icon,
-  });
-
-  final String title;
-  final String description;
-  final IconData icon;
-
-  @override
-  Widget build(BuildContext context) {
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
-
-    return Container(
-      color: colorScheme.surface,
-      alignment: Alignment.center,
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Column(
-        key: key,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 72, color: colorScheme.primary),
-          const SizedBox(height: 24),
-          Text(
-            title,
-            style: Theme.of(
-              context,
-            ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 12),
-          Text(
-            description,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onSurfaceVariant,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
-    );
-  }
 }
