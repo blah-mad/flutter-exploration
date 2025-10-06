@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'map_view/map_view_page.dart';
 import 'room_plan/room_plan_page.dart';
 
 void main() {
@@ -37,13 +38,7 @@ class _HomeShellState extends State<HomeShell> {
       label: 'Map View',
       icon: Icons.map_outlined,
       selectedIcon: Icons.map,
-      view: const _PlaceholderView(
-        key: ValueKey('mapView'),
-        title: 'Map View',
-        description:
-            'Soon you\'ll be able to explore locations on an interactive map.',
-        icon: Icons.map,
-      ),
+      view: const MapViewPage(),
     ),
     _NavItem(
       label: 'Room Plan',

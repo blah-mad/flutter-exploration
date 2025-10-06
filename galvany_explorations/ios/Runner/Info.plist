@@ -4,6 +4,10 @@
 <dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Galvany needs access to the camera/lidar for capturing 3d room data</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Galvany uses your location to provide directions to saved destinations.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Galvany uses your location to provide directions to saved destinations.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
