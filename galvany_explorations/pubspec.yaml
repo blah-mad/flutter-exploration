@@ -9,7 +9,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  path: ^1.9.1
   flutter_roomplan: ^1.0.7
+  path_provider: ^2.1.4
+  share_plus: ^10.0.2
+  open_filex: ^4.3.4
 
 dev_dependencies:
   flutter_test:

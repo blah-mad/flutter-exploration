@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'room_plan/room_plan_page.dart';
+
 void main() {
   runApp(const MainApp());
 }
@@ -47,12 +49,7 @@ class _HomeShellState extends State<HomeShell> {
       label: 'Room Plan',
       icon: Icons.apartment_outlined,
       selectedIcon: Icons.apartment,
-      view: const _PlaceholderView(
-        key: ValueKey('roomPlan'),
-        title: 'Room Plan',
-        description: 'Floor plans and room layouts will live here shortly.',
-        icon: Icons.apartment,
-      ),
+      view: const RoomPlanPage(),
     ),
     _NavItem(
       label: 'Projects',
@@ -71,13 +68,14 @@ class _HomeShellState extends State<HomeShell> {
   @override
   Widget build(BuildContext context) {
     final _NavItem currentItem = _items[_selectedIndex];
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(currentItem.label),
         centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        foregroundColor: Theme.of(context).colorScheme.onSurface,
+        backgroundColor: colorScheme.surface,
+        foregroundColor: colorScheme.onSurface,
         elevation: 0,
       ),
       body: AnimatedSwitcher(
@@ -92,12 +90,10 @@ class _HomeShellState extends State<HomeShell> {
           borderRadius: const BorderRadius.all(Radius.circular(28)),
           child: NavigationBar(
             height: 64,
-            backgroundColor: Theme.of(context)
-                .colorScheme
-                .surfaceVariant
-                .withOpacity(0.9),
-            indicatorColor:
-                Theme.of(context).colorScheme.primaryContainer.withOpacity(0.9),
+            backgroundColor: colorScheme.surfaceContainerHighest.withValues(
+              alpha: 0.9,
+            ),
+            indicatorColor: colorScheme.primaryContainer.withValues(alpha: 0.9),
             selectedIndex: _selectedIndex,
             labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
             onDestinationSelected: (index) {
@@ -160,18 +156,17 @@ class _PlaceholderView extends StatelessWidget {
           const SizedBox(height: 24),
           Text(
             title,
-            style: Theme.of(context)
-                .textTheme
-                .headlineSmall
-                ?.copyWith(fontWeight: FontWeight.w600),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 12),
           Text(
             description,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: colorScheme.onSurfaceVariant,
-                ),
+              color: colorScheme.onSurfaceVariant,
+            ),
             textAlign: TextAlign.center,
           ),
         ],
